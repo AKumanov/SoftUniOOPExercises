@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+<<<<<<< HEAD
 from project.utils import check_string_empty_or_white_space
 
 
@@ -9,10 +10,19 @@ class BakedFood(ABC):
 
     @abstractmethod
     def __init__(self, name, portion, price):
+=======
+from project.common.validator import Validator
+
+
+class BakedFood(ABC):
+    @abstractmethod
+    def __init__(self, name: str, portion: float, price: float):
+>>>>>>> 568d84c65e9791ecadbc978a331d0b40f1497680
         self.name = name
         self.portion = portion
         self.price = price
 
+<<<<<<< HEAD
     @classmethod
     def __validate_name(cls, value):
         if not check_string_empty_or_white_space(value):
@@ -26,13 +36,19 @@ class BakedFood(ABC):
     def __repr__(self):
         return f" - {self.name}: {self.portion:.2f}g - {self.price:.2f}lv"
 
+=======
+>>>>>>> 568d84c65e9791ecadbc978a331d0b40f1497680
     @property
     def name(self):
         return self.__name
 
     @name.setter
     def name(self, value):
+<<<<<<< HEAD
         self.__validate_name(value)
+=======
+        Validator.validate_string(value, "Name cannot be empty string or white space!")
+>>>>>>> 568d84c65e9791ecadbc978a331d0b40f1497680
         self.__name = value
 
     @property
@@ -41,5 +57,13 @@ class BakedFood(ABC):
 
     @price.setter
     def price(self, value):
+<<<<<<< HEAD
         self.__validate_price(value)
         self.__price = value
+=======
+        Validator.validate_integer(value, "Price cannot be less than or equal to zero!")
+        self.__price = value
+
+    def __repr__(self):
+        return f" - {self.name}: {self.portion:.2f}g - {self.price:.2f}lv"
+>>>>>>> 568d84c65e9791ecadbc978a331d0b40f1497680
